@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>How to Create a Simple Comment Box using HTML CSS & JS</title>
+        <style>
+            body {
+      background: beige;
+      font-family: montserrat;
+    }
+                .box {
+            max-width: 500px;
+            margin: 30px auto;
+            background: beige;
+            border-radius: 8px;
+            padding: 20px;
+        }
+                .comment {
+            display: block;
+            transition: all 1s;
+        }
+        .afterText {
+            min-height: 0px;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            padding: 5px 10px
+        }
+                .box textarea {
+            width: 100%;
+            border: none;
+            background: #262626;
+            padding: 15px;
+            height: 50%;
+            border-radius: 5px;
+            transition: all 0.5s;
+            margin-top: 15px;
+            color: #fff;
+            font-family: montserrat;
+        }
+                button.btn-box {
+            background: #262626;
+            color: #fff;
+            padding: 20px 25px;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            transition: 1s all;
+            font-size: 10px;
+            border-radius: 5px;
+            margin-top: 30px;
+        }
+                button.btn-box:hover {
+            background: darkorange;
+        }
+        </style>
+    </head>
+<body style="background-image: 'https://wallpaperaccess.com/full/949174.jpg';">
+   
+    <h1 style="color: red;">Market research</h1>
+    <h2 style="color: royalblue;">What Is Market Research?</h2>
+    
+    <p style="overflow-wrap: normal;color:black;font-size: larger;">Market research is the practice of enthusiastically engaging potential consumers to establish the feasibility of a proposed good or service. Moreover, this type of research enables an enterprise to determine its target marketplace and acquire perspectives and other responses from clients about their desire for a good or service. Market research can be performed in-house, by the enterprise, or by a firm that concentrates on this type of research field. In addition, evaluations, product testing, and surveys can all be utilized to achieve this. Furthermore, this type of research is an important part of a new service or product's research and development (R&D). On top of that, this type of research aims to analyze the market for a particular good or service to establish how the target audience will react. Consequently, this can involve the collection of information for market segmentation and product differentiation, which can be utilized to design advertising promotions or decide which traits are most essential to buyers. Besides, market research is an essential tool for firms to comprehend what their clients desire, develop goods that they will employ, and keep a competitive edge over their rivals.</p>
+    <h2 style="color: royalblue;">How Market Research Gathers Information</h2>
+<p style="overflow-wrap: normal;color:black;font-size: larger;">Market research integrates primary information which is acquired by the firm, or an individual employed by the firm, and secondary information, which is collected by outside sources. On the one hand, the information that the firm has acquired directly or that has been gathered by an individual or corporation engaged to do the investigation is referred to as primary information. On the other hand, secondary information is information that has already been found by an outside source. This can involve demographic details from administration census data, research documents from trade organizations, or presented data from other organizations in a similar market region.</p>
+    <h2 style="color: royalblue;">Example of Market Research</h2>
+<p style="overflow-wrap: normal;color:black;font-size: larger;">Several companies do market research to assess innovative products or to get feedback from clients on what products or services they require but do not have. Subsequently, a corporation considering beginning a business, for instance, might conduct market research to observe whether its product or service is feasible. If the market research supports client interest, the organization can confidently proceed with the business strategy. If not, the company should use the findings of the market research to develop product improvements that are more in line with customer desires.</p>
+    <h2 style="color: royalblue;">The bottom line</h2>
+    <p style="overflow-wrap: normal;color:black;font-size: larger;">Market research enables businesses to learn about their product's desire and feasibility, as well as how it might operate in the real world. Market research can be done using primary or secondary information, both of which provide distinct perspectives on a firm's offering. Finally, market research is an important part of a company's research and development (R&D) process, as well as a crucial factor in its success and development.</p>
+
+<br>
+
+<section id="wrapper">
+    <div class="box">
+      <div class="row">
+        <div class="col-6">
+          <div class="comment">
+        <p v-for="items in item" v-text="items"></p>
+          </div>
+          </div>
+          </div>
+      <div class="row">
+        <div class="col-6">
+      <textarea type="text" class="input" placeholder="Your Comment Here" v-model="newItem" @keyup.enter="addItem()"></textarea>
+          <button v-on:click="addItem()" class='btn-box' type="submit">Your Comment</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+  <script>
+          $(document).ready(function(){ 
+   
+      $(".btn-box").on('click', function(){
+      $(".comment").addClass("afterText");
+    });
+    $("textarea").on('keyup.enter', function(){
+      $(".comment").addClass("afterText");
+    });
+    });
+   
+  new Vue({
+      el: "#wrapper",
+      data:{
+        newItem: '',
+        item: [],
+      },
+      methods:{
+        addItem  (){
+        this.item.push(this.newItem);
+          this.newItem = "";
+        }
+    }
+   
+    });
+  </script>
+</body>
+</html>
